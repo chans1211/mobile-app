@@ -16,6 +16,7 @@ export default function Index() {
       return () => clearTimeout(timer);
     }
   }, [screen]);
+  
 
   return (
     <>

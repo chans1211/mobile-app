@@ -53,3 +53,4 @@ Join our community of developers creating universal apps.
 # mobile-app
 Academic repository for the development on a mobile application focused on UX/UI desing principles usinf modern web technologies
 >>>>>>> bddf6b3b0e65a781501206c56ad16118dece28a6
+

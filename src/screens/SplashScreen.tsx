@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import {
-    Animated,
-    StatusBar,
-    StyleSheet,
-    Text,
-    View,
+  Animated,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 
 const SplashScreen = () => {
