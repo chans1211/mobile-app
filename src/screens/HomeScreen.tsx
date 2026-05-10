@@ -219,3 +219,4 @@ const styles = StyleSheet.create({
   arrow: { color: '#94A3B8', fontSize: 20 },
   divider: { height: 1, backgroundColor: '#F1F5F9', marginHorizontal: 15 },
 });
+
