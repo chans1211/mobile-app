@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import {
   FlatList,
@@ -21,7 +22,8 @@ const countries = [
   "Paraguay", "Peru", "Spain", "Uruguay", "Venezuela"
 ];
 
-const RegisterScreen = () => {
+// Agregamos { goToLogin } como prop para poder volver
+const RegisterScreen = ({ goToLogin }: any) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -58,18 +60,21 @@ const RegisterScreen = () => {
             <Text style={styles.label}>First Name</Text>
             <TextInput
               style={styles.input}
+              placeholder="Your first name"
               onChangeText={(text) => setFormData({...formData, firstName: text})}
             />
 
             <Text style={styles.label}>Last Name</Text>
             <TextInput
               style={styles.input}
+              placeholder="Your last name"
               onChangeText={(text) => setFormData({...formData, lastName: text})}
             />
 
             <Text style={styles.label}>Mobile Phone</Text>
             <TextInput
               style={styles.input}
+              placeholder="300 000 0000"
               keyboardType="numeric"
               maxLength={10}
               onChangeText={(text) => setFormData({...formData, mobilePhone: text.replace(/[^0-9]/g, '')})}
@@ -78,10 +83,10 @@ const RegisterScreen = () => {
             <Text style={styles.label}>Address</Text>
             <TextInput
               style={styles.input}
+              placeholder="Street 123 #45-67"
               onChangeText={(text) => setFormData({...formData, address: text})}
             />
 
-            {/* SELECTOR DE PAÍS */}
             <Text style={styles.label}>Country</Text>
             <TouchableOpacity 
               style={styles.input} 
@@ -95,6 +100,7 @@ const RegisterScreen = () => {
             <Text style={styles.label}>Email Address</Text>
             <TextInput
               style={styles.input}
+              placeholder="example@mail.com"
               keyboardType="email-address"
               autoCapitalize="none"
               onChangeText={(text) => setFormData({...formData, email: text})}
@@ -103,6 +109,7 @@ const RegisterScreen = () => {
             <Text style={styles.label}>Password</Text>
             <TextInput
               style={styles.input}
+              placeholder="••••••••"
               secureTextEntry
               onChangeText={(text) => setFormData({...formData, password: text})}
             />
@@ -111,12 +118,18 @@ const RegisterScreen = () => {
               <Text style={styles.buttonText}>Finish Registration</Text>
             </TouchableOpacity>
 
+            {/* BOTÓN PARA VOLVER AL LOGIN */}
+            <TouchableOpacity onPress={goToLogin} style={styles.backButton}>
+              <Text style={styles.backButtonText}>
+                Already have an account? <Text style={{ color: '#2563EB' }}>Login</Text>
+              </Text>
+            </TouchableOpacity>
+
             <View style={{ height: 40 }} />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
 
-      {/* MODAL PARA LA LISTA DE PAÍSES */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -173,7 +186,10 @@ const styles = StyleSheet.create({
   button: { backgroundColor: '#0F172A', padding: 18, borderRadius: 12, alignItems: 'center', marginTop: 10 },
   buttonText: { color: '#FFFFFF', fontSize: 18, fontWeight: '700' },
   
-  // ESTILOS DEL MODAL
+  // ESTILOS NUEVOS PARA VOLVER
+  backButton: { marginTop: 20, alignItems: 'center' },
+  backButtonText: { color: '#64748B', fontSize: 15, fontWeight: '600' },
+
   modalOverlay: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
@@ -181,11 +197,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContent: {
-    width: '80%',
+    width: '85%',
     height: '60%',
     backgroundColor: 'white',
-    borderRadius: 20,
+    borderRadius: 25,
     padding: 20,
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 10,
+    elevation: 10
   },
   modalTitle: { fontSize: 20, fontWeight: 'bold', marginBottom: 15, color: '#0F172A', textAlign: 'center' },
   countryItem: { paddingVertical: 15, borderBottomWidth: 1, borderBottomColor: '#F1F5F9' },

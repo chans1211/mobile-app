@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StatusBar,
@@ -8,8 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
-const LoginScreen = () => {
+const LoginScreen = ({ goToRegister, goToHome }: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -24,6 +23,7 @@ const LoginScreen = () => {
       {/* HEADER */}
       <View style={styles.header}>
         <Text style={styles.bankName}>NovaBank</Text>
+
         <Text style={styles.subtitle}>
           Secure Mobile Banking
         </Text>
@@ -62,7 +62,7 @@ const LoginScreen = () => {
         {/* LOGIN BUTTON */}
         <TouchableOpacity
           style={styles.loginButton}
-          onPress={handleLogin}
+          onPress={goToHome}
         >
           <Text style={styles.loginButtonText}>
             Login
@@ -70,7 +70,7 @@ const LoginScreen = () => {
         </TouchableOpacity>
 
         {/* REGISTER */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={goToRegister}>
           <Text style={styles.registerText}>
             I don't have an account
           </Text>
@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     alignItems: 'center',
     marginTop: 10,
+
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
